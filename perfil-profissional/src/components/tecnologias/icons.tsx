@@ -16,7 +16,7 @@ const Ico = ({ name, file }: { name: string; file: string }) => (
 
 export const NodejsIcon = () => <Ico name="nodejs" file="original" />;
 export const ExpressIcon = () => <Ico name="express" file="original" />;
-export const PrismaIcon = () => <Ico name="prisma" file="original" />;
+export const PrismaIcon = () => <i className="devicon-prisma-plain" />;
 export const MongoDBIcon = () => <Ico name="mongodb" file="original" />;
 export const LockIcon = () => (
   /* Bcrypt não tem ícone no devicon — usa um cadeado SVG limpo */
@@ -32,7 +32,7 @@ export const LockIcon = () => (
     />
   </svg>
 );
-export const JwtIcon = () => <Ico name="jsonwebtokens" file="plain" />;
+export const JwtIcon = () => <span className="json-icon">{`{..}`}</span>;
 export const Html5Icon = () => <Ico name="html5" file="original" />;
 export const Css3Icon = () => <Ico name="css3" file="original" />;
 export const DockerIcon = () => <Ico name="docker" file="original" />;

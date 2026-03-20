@@ -1,8 +1,12 @@
 /* ─── Keyframes ──────────────────────────────────────────────────────────────── */
 
 @keyframes techSpin {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to   { transform: translate(-50%, -50%) rotate(360deg); }
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
 
 /* ─── Grid wrapper ───────────────────────────────────────────────────────────── */
@@ -10,6 +14,28 @@
 .tech-grid-wrapper {
   padding: 32px 24px;
   font-family: "Courier New", Courier, monospace;
+}
+
+.tech-card__icon-svg i {
+  font-size: 40px; /* ocupa o container */
+  color: #fff; /* branco */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.tech-card__icon-svg .json-icon {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  font-family: "Space Mono", monospace; /* combina com seu design */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
 .tech-grid {
@@ -75,9 +101,9 @@
   box-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
   transform: translate(-50%, -50%);
   transition:
-    width  0.35s ease,
+    width 0.35s ease,
     height 0.35s ease,
-    top    0.35s ease;
+    top 0.35s ease;
 }
 
 .tech-card:hover .tech-card__icon-circle {
@@ -86,9 +112,9 @@
   height: 52px;
   animation: techSpin 5s linear infinite;
   transition:
-    width  0.55s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+    width 0.55s cubic-bezier(0.68, -0.55, 0.265, 1.55),
     height 0.55s cubic-bezier(0.68, -0.55, 0.265, 1.55),
-    top    0.55s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    top 0.55s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .tech-card__icon-svg {
@@ -98,7 +124,9 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  transition: width 0.45s ease, height 0.45s ease;
+  transition:
+    width 0.45s ease,
+    height 0.45s ease;
 }
 
 .tech-card__icon-svg svg {
@@ -126,7 +154,7 @@
   transform: translateY(14px);
   pointer-events: none;
   transition:
-    opacity   0.45s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+    opacity 0.45s cubic-bezier(0.68, -0.55, 0.265, 1.55),
     transform 0.45s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
@@ -152,28 +180,72 @@
 }
 
 /* ─── Stagger delays for reveal animation ────────────────────────────────────── */
-.tech-card:nth-child(1)  { animation-delay: 0ms; }
-.tech-card:nth-child(2)  { animation-delay: 45ms; }
-.tech-card:nth-child(3)  { animation-delay: 90ms; }
-.tech-card:nth-child(4)  { animation-delay: 135ms; }
-.tech-card:nth-child(5)  { animation-delay: 180ms; }
-.tech-card:nth-child(6)  { animation-delay: 225ms; }
-.tech-card:nth-child(7)  { animation-delay: 270ms; }
-.tech-card:nth-child(8)  { animation-delay: 315ms; }
-.tech-card:nth-child(9)  { animation-delay: 360ms; }
-.tech-card:nth-child(10) { animation-delay: 405ms; }
-.tech-card:nth-child(11) { animation-delay: 450ms; }
-.tech-card:nth-child(12) { animation-delay: 495ms; }
-.tech-card:nth-child(13) { animation-delay: 540ms; }
-.tech-card:nth-child(14) { animation-delay: 585ms; }
-.tech-card:nth-child(15) { animation-delay: 630ms; }
-.tech-card:nth-child(16) { animation-delay: 675ms; }
-.tech-card:nth-child(17) { animation-delay: 720ms; }
-.tech-card:nth-child(18) { animation-delay: 765ms; }
-.tech-card:nth-child(19) { animation-delay: 810ms; }
-.tech-card:nth-child(20) { animation-delay: 855ms; }
-.tech-card:nth-child(21) { animation-delay: 900ms; }
-.tech-card:nth-child(22) { animation-delay: 945ms; }
+.tech-card:nth-child(1) {
+  animation-delay: 0ms;
+}
+.tech-card:nth-child(2) {
+  animation-delay: 45ms;
+}
+.tech-card:nth-child(3) {
+  animation-delay: 90ms;
+}
+.tech-card:nth-child(4) {
+  animation-delay: 135ms;
+}
+.tech-card:nth-child(5) {
+  animation-delay: 180ms;
+}
+.tech-card:nth-child(6) {
+  animation-delay: 225ms;
+}
+.tech-card:nth-child(7) {
+  animation-delay: 270ms;
+}
+.tech-card:nth-child(8) {
+  animation-delay: 315ms;
+}
+.tech-card:nth-child(9) {
+  animation-delay: 360ms;
+}
+.tech-card:nth-child(10) {
+  animation-delay: 405ms;
+}
+.tech-card:nth-child(11) {
+  animation-delay: 450ms;
+}
+.tech-card:nth-child(12) {
+  animation-delay: 495ms;
+}
+.tech-card:nth-child(13) {
+  animation-delay: 540ms;
+}
+.tech-card:nth-child(14) {
+  animation-delay: 585ms;
+}
+.tech-card:nth-child(15) {
+  animation-delay: 630ms;
+}
+.tech-card:nth-child(16) {
+  animation-delay: 675ms;
+}
+.tech-card:nth-child(17) {
+  animation-delay: 720ms;
+}
+.tech-card:nth-child(18) {
+  animation-delay: 765ms;
+}
+.tech-card:nth-child(19) {
+  animation-delay: 810ms;
+}
+.tech-card:nth-child(20) {
+  animation-delay: 855ms;
+}
+.tech-card:nth-child(21) {
+  animation-delay: 900ms;
+}
+.tech-card:nth-child(22) {
+  animation-delay: 945ms;
+}
 
 /* ─── Responsive ─────────────────────────────────────────────────────────────── */
 
