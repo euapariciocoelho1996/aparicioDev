@@ -1,4 +1,6 @@
 import "./App.css";
+import Curriculo from "./components/curriculo/Curriculo";
+
 import Footer from "./components/headerEfooter/Footer";
 import Header from "./components/headerEfooter/Header";
 import Perfil from "./components/perfil/perfil";
@@ -13,6 +15,7 @@ function App() {
       <Perfil />
       <Sobre />
       <Tecnologias />
+      <Curriculo />
       <Footer />
     </>
   );
