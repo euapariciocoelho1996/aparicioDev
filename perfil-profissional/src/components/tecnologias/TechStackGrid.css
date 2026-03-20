@@ -174,3 +174,135 @@
 .tech-card:nth-child(20) { animation-delay: 855ms; }
 .tech-card:nth-child(21) { animation-delay: 900ms; }
 .tech-card:nth-child(22) { animation-delay: 945ms; }
+
+/* ─── Responsive ─────────────────────────────────────────────────────────────── */
+
+/* Tablet (≤ 960px): manter comportamento padrão, minmax um pouco menor */
+@media (max-width: 960px) {
+  .tech-grid {
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 12px;
+  }
+
+  .tech-card {
+    height: 110px;
+  }
+
+  .tech-card__icon-circle {
+    width: 60px;
+    height: 60px;
+  }
+
+  .tech-card:hover .tech-card__icon-circle {
+    width: 44px;
+    height: 44px;
+  }
+
+  .tech-card__icon-svg {
+    width: 34px;
+    height: 34px;
+  }
+
+  .tech-card:hover .tech-card__icon-svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .tech-card__label-name {
+    font-size: 11px;
+  }
+
+  .tech-card__label-category {
+    font-size: 8px;
+  }
+}
+
+/* Mobile (≤ 600px): forçar 3 colunas fixas */
+@media (max-width: 600px) {
+  .tech-grid-wrapper {
+    padding: 16px 12px;
+  }
+
+  .tech-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .tech-card {
+    height: 90px;
+    border-width: 2px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 0 rgba(255, 255, 255, 0.35);
+  }
+
+  .tech-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 rgba(255, 255, 255, 0.55);
+  }
+
+  .tech-card__icon-circle {
+    width: 48px;
+    height: 48px;
+  }
+
+  .tech-card:hover .tech-card__icon-circle {
+    width: 36px;
+    height: 36px;
+    top: 26%;
+  }
+
+  .tech-card__icon-svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .tech-card:hover .tech-card__icon-svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .tech-card__label {
+    bottom: 8px;
+  }
+
+  .tech-card__label-name {
+    font-size: 9px;
+    letter-spacing: 0.4px;
+  }
+
+  .tech-card__label-category {
+    font-size: 7px;
+    letter-spacing: 0.3px;
+  }
+}
+
+/* Mobile muito pequeno (≤ 380px): 2 colunas para telas muito estreitas */
+@media (max-width: 380px) {
+  .tech-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .tech-card {
+    height: 100px;
+  }
+
+  .tech-card__icon-circle {
+    width: 52px;
+    height: 52px;
+  }
+
+  .tech-card:hover .tech-card__icon-circle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .tech-card__icon-svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .tech-card__label-name {
+    font-size: 10px;
+  }
+}
