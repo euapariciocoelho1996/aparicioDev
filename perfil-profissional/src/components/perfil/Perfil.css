@@ -1,0 +1,475 @@
+/* ── Fonts ───────────────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap');
+
+/* ── CSS vars ────────────────────────────────────────────────────────────────── */
+:root {
+  --neon:        #2563ff;
+  --neon-light:  #4f8aff;
+  --neon-dim:    rgba(37, 99, 255, 0.18);
+  --neon-glow:   rgba(37, 99, 255, 0.35);
+  --bg:          #060810;
+  --bg-card:     #0a0d18;
+  --white:       #ffffff;
+}
+
+/* ── Section ─────────────────────────────────────────────────────────────────── */
+.perfil-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 52px;
+  padding: 100px 64px 80px;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+
+/* grain */
+.perfil-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* neon glow orbs */
+.perfil-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 50% at 75% 50%,  rgba(37,99,255,0.13) 0%, transparent 70%),
+    radial-gradient(ellipse 30% 40% at 10% 80%,  rgba(37,99,255,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 20% 20% at 90% 10%,  rgba(79,138,255,0.05) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* scan-line stripe */
+.perfil-bg-lines {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(37,99,255,0.012) 3px,
+    rgba(37,99,255,0.012) 4px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Left: text ──────────────────────────────────────────────────────────────── */
+.perfil-text {
+  flex: 0 0 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* eyebrow */
+.perfil-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Space Mono", monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--neon-light);
+  opacity: 0;
+  transform: translateX(-18px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.perfil-eyebrow-line {
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: var(--neon-light);
+  flex-shrink: 0;
+  box-shadow: 0 0 6px var(--neon);
+}
+
+/* name */
+.perfil-name {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(42px, 5vw, 70px);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -3px;
+  color: var(--white);
+  margin: 0;
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.85s ease 0.1s, transform 0.85s cubic-bezier(0.16,1,0.3,1) 0.1s;
+}
+
+.perfil-name em {
+  font-style: normal;
+  color: var(--neon-light);
+  text-shadow:
+    0 0 24px rgba(37,99,255,0.6),
+    0 0 48px rgba(37,99,255,0.3);
+}
+
+/* role */
+.perfil-role {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease 0.22s, transform 0.7s ease 0.22s;
+}
+
+.perfil-role-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--neon-light);
+  flex-shrink: 0;
+  box-shadow: 0 0 8px var(--neon), 0 0 16px var(--neon);
+  animation: perfil-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes perfil-pulse {
+  0%,100% { opacity: 0.6; transform: scale(1);    box-shadow: 0 0 6px  var(--neon); }
+  50%      { opacity: 1;   transform: scale(1.35); box-shadow: 0 0 14px var(--neon), 0 0 28px var(--neon-glow); }
+}
+
+.perfil-role-text {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.5);
+}
+
+/* divider */
+.perfil-divider {
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--neon-light), transparent);
+  box-shadow: 0 0 8px var(--neon-glow);
+  transition: width 0.9s cubic-bezier(0.16,1,0.3,1) 0.3s;
+}
+
+/* description */
+.perfil-desc {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.4);
+  margin: 0;
+  max-width: 440px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease 0.36s, transform 0.7s ease 0.36s;
+}
+
+/* ── CTA buttons ─────────────────────────────────────────────────────────────── */
+.perfil-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s ease 0.48s, transform 0.6s ease 0.48s;
+}
+
+.perfil-btn-primary {
+  font-family: "Space Mono", monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--neon);
+  border: 2px solid var(--neon-light);
+  border-radius: 7px;
+  padding: 12px 22px;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 rgba(37,99,255,0.5), 0 0 20px rgba(37,99,255,0.25);
+  transition: transform 0.25s cubic-bezier(0.175,0.885,0.32,1.275),
+              box-shadow 0.25s ease,
+              background 0.2s ease;
+}
+
+.perfil-btn-primary:hover {
+  background: #1a4fe0;
+  transform: translate(-2px,-2px);
+  box-shadow: 6px 6px 0 rgba(37,99,255,0.5), 0 0 30px rgba(37,99,255,0.45);
+}
+
+.perfil-btn-primary:active {
+  transform: translate(1px,1px);
+  box-shadow: 2px 2px 0 rgba(37,99,255,0.5);
+}
+
+/* second button — outlined neon variant */
+.perfil-btn-alt {
+  background: transparent;
+  color: var(--neon-light);
+  border-color: rgba(37,99,255,0.5);
+  box-shadow: 4px 4px 0 rgba(37,99,255,0.25), 0 0 12px rgba(37,99,255,0.12);
+}
+
+.perfil-btn-alt:hover {
+  background: rgba(37,99,255,0.1);
+  color: #fff;
+  border-color: var(--neon-light);
+  box-shadow: 6px 6px 0 rgba(37,99,255,0.3), 0 0 20px rgba(37,99,255,0.25);
+}
+
+/* social */
+.perfil-social {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease 0.58s, transform 0.6s ease 0.58s;
+}
+
+.perfil-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 7px;
+  border: 1px solid rgba(37,99,255,0.2);
+  background: rgba(37,99,255,0.05);
+  color: rgba(255,255,255,0.38);
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+.perfil-social-link:hover {
+  border-color: var(--neon-light);
+  color: var(--neon-light);
+  background: rgba(37,99,255,0.12);
+  box-shadow: 0 0 12px rgba(37,99,255,0.3);
+}
+
+/* ── Right: avatar wrap ──────────────────────────────────────────────────────── */
+.perfil-avatar-wrap {
+  flex: 0 0 300px;
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  transform: translateX(28px);
+  transition: opacity 0.9s ease 0.15s, transform 0.9s cubic-bezier(0.16,1,0.3,1) 0.15s;
+}
+
+/* outer glow ring */
+.perfil-avatar-wrap::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 19px;
+  background: linear-gradient(135deg, rgba(37,99,255,0.6), transparent 50%, rgba(37,99,255,0.2));
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.5s ease 0.6s;
+}
+
+.perfil-section.is-visible .perfil-avatar-wrap::before {
+  opacity: 1;
+}
+
+/* ── Carousel ────────────────────────────────────────────────────────────────── */
+.carousel {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 2px solid rgba(37,99,255,0.35);
+  box-shadow:
+    6px 6px 0 rgba(37,99,255,0.3),
+    0 0 40px rgba(37,99,255,0.15),
+    inset 0 0 60px rgba(37,99,255,0.04);
+  background: var(--bg-card);
+}
+
+/* ── Slides ── */
+.carousel__track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel__slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.38s ease;
+  pointer-events: none;
+}
+
+.carousel__slide.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* leaving animations */
+@keyframes slideOutLeft {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(-6%); }
+}
+@keyframes slideOutRight {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(6%); }
+}
+
+.carousel__slide.is-leaving-left  { animation: slideOutLeft  0.38s ease forwards; }
+.carousel__slide.is-leaving-right { animation: slideOutRight 0.38s ease forwards; }
+
+.carousel__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  filter: contrast(1.05) brightness(0.92);
+  user-select: none;
+}
+
+/* neon + fade overlay */
+.carousel__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, transparent 50%, rgba(6,8,16,0.88) 100%),
+    linear-gradient(135deg, rgba(37,99,255,0.07) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ── Arrow buttons ── */
+.carousel__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 4;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid rgba(37,99,255,0.35);
+  background: rgba(6,8,16,0.75);
+  color: rgba(255,255,255,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: border-color 0.2s, color 0.2s, background 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.carousel__btn:hover {
+  border-color: var(--neon-light);
+  color: var(--neon-light);
+  background: rgba(37,99,255,0.15);
+  box-shadow: 0 0 10px rgba(37,99,255,0.3);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.carousel__btn--prev { left: 10px; }
+.carousel__btn--next { right: 10px; }
+
+/* ── Dots ── */
+.carousel__dots {
+  position: absolute;
+  bottom: 44px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 4;
+}
+
+.carousel__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.25);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.carousel__dot.is-active {
+  background: var(--neon-light);
+  transform: scale(1.35);
+  box-shadow: 0 0 8px var(--neon), 0 0 16px var(--neon-glow);
+}
+
+/* ── Bottom tag ── */
+.perfil-avatar-tag {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Space Mono", monospace;
+  font-size: 8px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--neon-light);
+  background: rgba(6,8,16,0.85);
+  border: 1px solid rgba(37,99,255,0.4);
+  border-radius: 4px;
+  padding: 5px 12px;
+  white-space: nowrap;
+  z-index: 4;
+  box-shadow: 0 0 10px rgba(37,99,255,0.25);
+}
+
+/* ── Animate-in ──────────────────────────────────────────────────────────────── */
+.perfil-section.is-visible .perfil-eyebrow,
+.perfil-section.is-visible .perfil-name,
+.perfil-section.is-visible .perfil-role,
+.perfil-section.is-visible .perfil-desc,
+.perfil-section.is-visible .perfil-actions,
+.perfil-section.is-visible .perfil-social,
+.perfil-section.is-visible .perfil-avatar-wrap {
+  opacity: 1;
+  transform: none;
+}
+
+.perfil-section.is-visible .perfil-divider {
+  width: 100%;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .perfil-section     { gap: 40px; padding: 90px 48px 72px; }
+  .perfil-text        { flex: 1; }
+  .perfil-avatar-wrap { flex: 0 0 260px; }
+}
+
+@media (max-width: 768px) {
+  .perfil-section {
+    flex-direction: column-reverse;
+    padding: 80px 28px 60px;
+    gap: 32px;
+  }
+  .perfil-text        { flex: none; width: 100%; }
+  .perfil-avatar-wrap { flex: none; width: 220px; align-self: center; }
+}
+
+@media (max-width: 480px) {
+  .perfil-section { padding: 72px 20px 52px; }
+}

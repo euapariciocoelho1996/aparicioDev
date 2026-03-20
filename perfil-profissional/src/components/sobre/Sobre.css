@@ -1,0 +1,139 @@
+/* ── Fonts (shared — omit if already imported globally) ─────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap');
+
+/* ── Section ────────────────────────────────────────────────────────────────── */
+.sobre-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 56px;
+  padding: 100px 64px;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background: #080808;
+  position: relative;
+  overflow: hidden;
+}
+
+/* grain noise */
+.sobre-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.035;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* glow blob — center */
+.sobre-section::after {
+  content: "";
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 68%);
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────────── */
+.sobre-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.sobre-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Space Mono", monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+
+  opacity: 0;
+  transform: translateY(-14px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.sobre-eyebrow-line {
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.3);
+  flex-shrink: 0;
+}
+
+.sobre-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(38px, 4.5vw, 62px);
+  font-weight: 700;
+  line-height: 1.0;
+  letter-spacing: -2px;
+  color: #ffffff;
+  margin: 0;
+
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s ease 0.1s, transform 0.8s cubic-bezier(0.16,1,0.3,1) 0.1s;
+}
+
+.sobre-title em {
+  font-style: normal;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.sobre-subtitle {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.35);
+  margin: 0;
+  max-width: 380px;
+
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease 0.22s, transform 0.7s ease 0.22s;
+}
+
+/* ── Animate-in ──────────────────────────────────────────────────────────────── */
+.sobre-section.is-visible .sobre-eyebrow,
+.sobre-section.is-visible .sobre-title,
+.sobre-section.is-visible .sobre-subtitle {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Cards grid ─────────────────────────────────────────────────────────────── */
+.sobre-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+  position: relative;
+  z-index: 1;
+  /* room for card translate + shadow */
+  padding: 8px 16px 20px;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .sobre-section { padding: 72px 28px; gap: 44px; }
+}
+
+@media (max-width: 480px) {
+  .sobre-section { padding: 56px 20px; gap: 36px; }
+  .sobre-grid { gap: 24px; }
+}

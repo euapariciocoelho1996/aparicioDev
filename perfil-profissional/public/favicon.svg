@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <linearGradient id="bg-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0d18"/>
+      <stop offset="100%" stop-color="#060810"/>
+    </linearGradient>
+    <linearGradient id="border-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4f8aff"/>
+      <stop offset="100%" stop-color="#2563ff"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="1.2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="32" height="32" rx="7" fill="url(#bg-grad)"/>
+
+  <!-- Border -->
+  <rect x="1" y="1" width="30" height="30" rx="6.2"
+        fill="none" stroke="url(#border-grad)" stroke-width="1.5" opacity="0.9"/>
+
+  <!-- Brutalist shadow offset accent -->
+  <rect x="2.5" y="2.5" width="30" height="30" rx="6.2"
+        fill="none" stroke="#2563ff" stroke-width="0.5" opacity="0.2"/>
+
+  <!-- Letter A -->
+  <g filter="url(#glow)">
+    <path d="M6 23 L10 9 L14 23 M7.8 18.5 L12.2 18.5"
+          fill="none" stroke="#4f8aff" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Letter C -->
+  <g filter="url(#glow)">
+    <path d="M24.5 13 C23 10.5 20 9.5 18 11 C16 12.5 16 19.5 18 21 C20 22.5 23 21.5 24.5 19"
+          fill="none" stroke="#4f8aff" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Neon dot accent bottom-right -->
+  <circle cx="27" cy="27" r="1.5" fill="#2563ff" opacity="0.7"/>
+  <circle cx="27" cy="27" r="1" fill="#4f8aff"/>
+</svg>

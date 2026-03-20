@@ -1,0 +1,303 @@
+/* ── Fonts ──────────────────────────────────────────────────────────────────── */
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap");
+
+/* ── Section ────────────────────────────────────────────────────────────────── */
+.tec-section {
+  display: flex;
+  align-items: center;
+  gap: 72px;
+  padding: 100px 64px;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background: #080808;
+  position: relative;
+  overflow: hidden;
+}
+
+/* noise grain overlay */
+.tec-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.035;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* accent glow blob */
+.tec-section::after {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.03) 0%,
+    transparent 70%
+  );
+  top: -100px;
+  left: -100px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Text panel ─────────────────────────────────────────────────────────────── */
+.tec-text {
+  flex: 0 0 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  position: sticky;
+  top: 80px;
+  z-index: 1;
+}
+
+/* eyebrow */
+.tec-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Space Mono", monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+
+  opacity: 0;
+  transform: translateX(-16px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+.tec-eyebrow-line {
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.3);
+  flex-shrink: 0;
+}
+
+/* title */
+.tec-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(40px, 4.5vw, 62px);
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  margin: 0;
+  letter-spacing: -2px;
+
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.8s ease 0.12s,
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.12s;
+}
+
+.tec-title em {
+  font-style: normal;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+/* divider */
+.tec-divider {
+  width: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.12);
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s;
+}
+
+/* description */
+.tec-desc {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 15px;
+  line-height: 1.85;
+  color: rgba(255, 255, 255, 0.42);
+  margin: 0;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.7s ease 0.3s,
+    transform 0.7s ease 0.3s;
+}
+
+/* counter */
+.tec-counter {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.6s ease 0.42s,
+    transform 0.6s ease 0.42s;
+}
+
+.tec-counter-num {
+  font-family: "Space Mono", monospace;
+  font-size: 56px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+  letter-spacing: -3px;
+}
+
+.tec-counter-label {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.28);
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  line-height: 1.5;
+}
+
+/* tags strip */
+.tec-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.6s ease 0.52s,
+    transform 0.6s ease 0.52s;
+}
+
+.tec-tag {
+  font-family: "Space Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  padding: 4px 9px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* ── Animate-in ──────────────────────────────────────────────────────────────── */
+.tec-section.is-visible .tec-eyebrow,
+.tec-section.is-visible .tec-title,
+.tec-section.is-visible .tec-desc,
+.tec-section.is-visible .tec-counter,
+.tec-section.is-visible .tec-tags {
+  opacity: 1;
+  transform: none;
+}
+
+.tec-section.is-visible .tec-divider {
+  width: 100%;
+}
+
+/* ── Scroll area ─────────────────────────────────────────────────────────────── */
+.tec-scroll-wrap {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+/* fade top/bottom edges */
+.tec-scroll-wrap::before,
+.tec-scroll-wrap::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 8px;
+  height: 56px;
+  z-index: 3;
+  pointer-events: none;
+}
+.tec-scroll-wrap::before {
+  top: 0;
+  background: linear-gradient(to bottom, #080808, transparent);
+}
+.tec-scroll-wrap::after {
+  bottom: 0;
+  background: linear-gradient(to top, #080808, transparent);
+}
+
+.tec-scroll-area {
+  height: 560px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 8px 8px 8px 2px;
+
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.12) transparent;
+}
+
+.tec-scroll-area::-webkit-scrollbar {
+  width: 3px;
+}
+.tec-scroll-area::-webkit-scrollbar-track {
+  background: transparent;
+}
+.tec-scroll-area::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+}
+.tec-scroll-area::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+/* ── Override TechStackGrid inner padding ────────────────────────────────────── */
+.tec-scroll-area .tech-grid-wrapper {
+  padding: 12px 4px 24px;
+}
+
+/* card reveal stagger */
+@keyframes tec-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.tec-scroll-area .tech-card {
+  opacity: 0;
+  animation: tec-card-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-play-state: paused;
+}
+
+.tec-section.is-visible .tec-scroll-area .tech-card {
+  animation-play-state: running;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .tec-section {
+    flex-direction: column;
+    padding: 72px 28px;
+    gap: 48px;
+  }
+
+  .tec-text {
+    flex: none;
+    position: static;
+    width: 100%;
+  }
+
+  .tec-scroll-area {
+    height: 420px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tec-section {
+    padding: 56px 20px;
+  }
+  .tec-scroll-area {
+    height: 360px;
+  }
+}

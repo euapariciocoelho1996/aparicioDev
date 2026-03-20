@@ -1,0 +1,98 @@
+/* ── Fonts (shared — omit if already imported globally) ─────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap');
+
+/* ── Card ───────────────────────────────────────────────────────────────────── */
+.sobre-card {
+  width: 300px;
+  min-height: 260px;
+  background: #111111;
+  border: 3px solid rgba(255, 255, 255, 0.72);
+  border-radius: 12px;
+  box-shadow: 8px 8px 0 rgba(255, 255, 255, 0.45);
+  overflow: hidden;
+  translate: -4px -4px;
+  transition: translate 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              box-shadow 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              opacity 0.7s ease,
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* entry animation */
+  opacity: 0;
+  transform: translateY(28px) scale(0.97);
+}
+
+.sobre-card.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.sobre-card:hover {
+  translate: -8px -8px;
+  box-shadow: 12px 12px 0 rgba(255, 255, 255, 0.55);
+}
+
+/* ── Head ───────────────────────────────────────────────────────────────────── */
+.sobre-card__head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.06);
+  border-bottom: 3px solid rgba(255, 255, 255, 0.72);
+  box-sizing: border-box;
+}
+
+.sobre-card__head-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  flex-shrink: 0;
+}
+
+.sobre-card__head-title {
+  font-family: "Space Mono", monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* ── Content ────────────────────────────────────────────────────────────────── */
+.sobre-card__body {
+  padding: 20px 18px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sobre-card__icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.45);
+  flex-shrink: 0;
+}
+
+.sobre-card__text {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.45);
+  margin: 0;
+}
+
+/* ── Divider ────────────────────────────────────────────────────────────────── */
+.sobre-card__divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.07);
+  margin: 0;
+}
