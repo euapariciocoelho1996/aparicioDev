@@ -128,7 +128,7 @@ export default function Contato() {
           from_name: values.nome,
           from_email: values.email,
           message: values.mensagem,
-          to_email: "Digite seu melhor email",
+          to_email: "faparicionc@gmail.com",
         },
         EMAILJS_PUBLIC_KEY,
       );
@@ -226,7 +226,7 @@ export default function Contato() {
                   className={`ctt-input${touched.email && errors.email ? " has-error" : ""}`}
                   type="email"
                   name="email"
-                  placeholder="faparicionc@gmail.com"
+                  placeholder="Digite seu melhor email!"
                   value={values.email}
                   onChange={handleChange}
                   onBlur={handleBlur}
