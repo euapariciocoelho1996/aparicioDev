@@ -128,7 +128,7 @@ export default function Contato() {
           from_name: values.nome,
           from_email: values.email,
           message: values.mensagem,
-          to_email: "faparicionc@gmail.com",
+          to_email: "Digite seu melhor email",
         },
         EMAILJS_PUBLIC_KEY,
       );
